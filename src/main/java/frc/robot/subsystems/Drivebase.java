@@ -40,15 +40,10 @@ public class Drivebase extends SubsystemBase {
     m_right.setInverted(true);
 
     m_myRobot = new DifferentialDrive(m_left, m_right);
-
-    
-
-    // LEFT OFF HERE
-    // ^^ past me i swear plz tell me what you were doing next time come on i can't remember everything
   }
 
-  private void setInvert(MotorControllerGroup m_right2) {
-  }
+  // private void setInvert(MotorControllerGroup m_right2) {
+  // }
 
   public void drive(double robotOutput, double turnAmount) {
     m_myRobot.arcadeDrive(

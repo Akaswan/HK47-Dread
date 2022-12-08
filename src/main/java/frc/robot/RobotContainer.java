@@ -36,16 +36,20 @@ public class RobotContainer {
     return xbox0;
   }
 
-  public static double getDriveRightTrigger() {
-    return getXbox0().getRightTriggerAxis();
-  }
+  // public static double getDriveRightTrigger() {
+  //   return getXbox0().getRightTriggerAxis();
+  // }
 
-  public static double getDriveLeftTrigger() {
-    return getXbox0().getLeftTriggerAxis();
+  // public static double getDriveLeftTrigger() {
+  //   return getXbox0().getLeftTriggerAxis();
+  // }
+
+  public static double getDriveStick() {
+    return getXbox0().getLeftY();
   }
 
   public static double getDriveSteer() {
-    return getXbox0().getLeftX();
+    return getXbox0().getRightX();
   }
 
   /**

@@ -34,10 +34,7 @@ public class ArcadeDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double forwardVal = RobotContainer.getDriveRightTrigger();
-    double backwardVal = RobotContainer.getDriveLeftTrigger();
-    
-    double robotOutput = forwardVal - backwardVal;
+    double robotOutput = RobotContainer.getDriveStick();
     double turnAmount = RobotContainer.getDriveSteer();
     m_drivebase.drive(robotOutput, turnAmount);
   }
