@@ -24,6 +24,8 @@ public class Drivebase extends SubsystemBase {
   final MotorControllerGroup m_left;
   final MotorControllerGroup m_right;
   final DifferentialDrive m_myRobot;
+  
+  private boolean switchFront;
 
   // final XboxController xbox0;
   
@@ -40,16 +42,37 @@ public class Drivebase extends SubsystemBase {
     m_right.setInverted(true);
 
     m_myRobot = new DifferentialDrive(m_left, m_right);
+    
+    switchFront = false;
   }
 
   // private void setInvert(MotorControllerGroup m_right2) {
   // }
+  
+  public boolean getSwitchFront() {
+    return switchFront;
+  }
+
+  public void switchFront() {
+    switchFront = !switchFront;
+  }
+
+  public void resetSwitchFront() {
+    switchFront = false;
+  }
 
   public void drive(double robotOutput, double turnAmount) {
-    m_myRobot.arcadeDrive(
-      robotOutput * Constants.SPEED_SCALING,
-      turnAmount * Constants.TURN_SCALING
-    );
+    if (switchFront == false) {
+      m_myRobot.arcadeDrive(
+        robotOutput * speedScaling,
+        turnAmount * Constants.TURN_SCALING
+      );
+    } else {
+      m_myRobot.arcadeDrive(
+        -robotOutput * speedScaling,
+        turnAmount * Constants.TURN_SCALING
+      );
+    }
   }
 
   public void stopMotors() {
