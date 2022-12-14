@@ -64,12 +64,12 @@ public class Drivebase extends SubsystemBase {
   public void drive(double robotOutput, double turnAmount) {
     if (switchFront == false) {
       m_myRobot.arcadeDrive(
-        robotOutput * speedScaling,
+        robotOutput * Constants.SPEED_SCALING,
         turnAmount * Constants.TURN_SCALING
       );
     } else {
       m_myRobot.arcadeDrive(
-        -robotOutput * speedScaling,
+        -robotOutput * Constants.SPEED_SCALING,
         turnAmount * Constants.TURN_SCALING
       );
     }
