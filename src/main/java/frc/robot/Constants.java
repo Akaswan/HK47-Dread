@@ -17,6 +17,7 @@ public final class Constants {
     public static Integer rearLeftID = 15;
     public static Integer frontRightID = 16;
     public static Integer rearRightID = 14;
+    public static Integer beltID = 17;
 
     public static double SPEED_SCALING = 0.75;
     public static double TURN_SCALING = 0.5;

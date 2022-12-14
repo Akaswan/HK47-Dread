@@ -9,8 +9,9 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.SwitchFront;
+import frc.robot.commands.Belt.*;
+import frc.robot.subsystems.Belt;
 import frc.robot.subsystems.Drivebase;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.recordplayback.RecordPlaybackSubsystem;
 
@@ -25,7 +26,9 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public final static Drivebase m_drivebase = new Drivebase();
   private final ArcadeDrive m_arcadeDrive = new ArcadeDrive(m_drivebase);
+  private final static Belt m_belt = new Belt();
   public final static XboxController xbox0 = new XboxController(0);
+  public final static XboxController xbox1 = new XboxController(1);
   private final RecordPlaybackSubsystem recordPlaybackSubsystem = new RecordPlaybackSubsystem();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -37,6 +40,10 @@ public class RobotContainer {
 
   public static XboxController getXbox0(){
     return xbox0;
+  }
+  
+  public static XboxController getXbox1(){
+    return xbox1;
   }
 
   // public static double getDriveRightTrigger() {
@@ -62,7 +69,15 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-     new JoystickButton(xbox0, Button.kX.value).whenPressed(new SwitchFront(m_drivebase));
+
+    // Pilot Controller
+    new JoystickButton(xbox0, Button.kX.value).whenPressed(new SwitchFront(m_drivebase));
+    
+    // Co-Pilot Controller
+    new JoystickButton(xbox1, Button.kA.value).whenPressed(new SlowBelt(m_belt));
+    new JoystickButton(xbox1, Button.kB.value).whenPressed(new FastBelt(m_belt));
+    new JoystickButton(xbox1, Button.kX.value).whenPressed(new ReverseSlowBelt(m_belt));
+    new JoystickButton(xbox1, Button.kY.value).whenPressed(new ReverseFastBelt(m_belt));
   }
 
 }
