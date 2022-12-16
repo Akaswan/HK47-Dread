@@ -13,7 +13,6 @@ import frc.robot.commands.Belt.*;
 import frc.robot.subsystems.Belt;
 import frc.robot.subsystems.Drivebase;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.recordplayback.RecordPlaybackSubsystem;
 
 
 /**
@@ -29,7 +28,6 @@ public class RobotContainer {
   private final static Belt m_belt = new Belt();
   public final static XboxController xbox0 = new XboxController(0);
   public final static XboxController xbox1 = new XboxController(1);
-  private final RecordPlaybackSubsystem recordPlaybackSubsystem = new RecordPlaybackSubsystem();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
