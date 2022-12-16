@@ -12,7 +12,10 @@ public class AutoLeft extends SequentialCommandGroup {
     m_drivebase = drivebase;
 
     addCommands( 
-      new AutoDrive(m_drivebase, .75, -0.9).withTimeout(5)
+      new WaitCommand(2),
+      new AutoDrive(m_drivebase, .75, 0.0).withTimeout(5),
+      new AutoDrive(m_drivebase, 0.0, -0.9).withTimeout(0.5),
+      new AutoDrive(m_drivebase, .75, 0.0).withTimeout(2)
     );
 
   }
